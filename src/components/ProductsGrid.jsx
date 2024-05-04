@@ -4,22 +4,26 @@ import { formatPrice } from "../utils";
 function ProductsGrid() {
   const { products } = useLoaderData();
   return (
-    <div className="flex">
+    <div className="pt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3 mb-10">
       {products.map((product) => {
         const { title, price, image } = product.attributes;
         const dollarAmount = formatPrice(price);
         return (
           <Link
-            className="card w-96 bg-base-100 shadow-xl"
+            className="card w-full shadow-xl hover:shadow-2xl transition duration-300 "
             key={product.id}
-            to={`./product/${product.id}`}
+            to={`/product/${product.id}`}
           >
-            <figure className="px-10 pt-10">
-              <img src={image} alt="Shoes" className="rounded-xl" />
+            <figure className="px-4 pt-4">
+              <img
+                className="rounded-xl h-64 md:h-48 w-full object-cover"
+                src={image}
+                alt={title}
+              />
             </figure>
             <div className="card-body items-center text-center">
-              <h2 className="card-title">{title}</h2>
-              <p>{dollarAmount}</p>
+              <h2 className="card-title capitalize tracking-wider">{title}</h2>
+              <span className="text-secondary">{dollarAmount}</span>
             </div>
           </Link>
         );

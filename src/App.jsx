@@ -11,11 +11,16 @@ import {
   Products,
   Login,
   Landing,
-  SingleRroduct,
+  SingleProduct,
   Register,
 } from "./pages";
+
+// components
 import { ErrorElement } from "./components";
+
+// loaders
 import { loader as LandingLoader } from "./pages/Landing";
+import { loader as SingleProductLoader } from "./pages/SingleProduct";
 
 function App() {
   const routers = createBrowserRouter([
@@ -40,7 +45,8 @@ function App() {
         },
         {
           path: "/product/:id",
-          element: <SingleRroduct />,
+          element: <SingleProduct />,
+          loader: SingleProductLoader,
         },
         {
           path: "/cart",
