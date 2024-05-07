@@ -13,7 +13,7 @@ export const loader = async ({ request }) => {
 
 function Products() {
   return (
-    <div className="align-content">
+    <div className="align-content mt-14">
       <Filter />
       <ProductsContainer />
     </div>
