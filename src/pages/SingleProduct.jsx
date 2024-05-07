@@ -1,5 +1,5 @@
 import { useLoaderData, Link } from "react-router-dom";
-import { customFetch, formatPrice } from "../utils";
+import { customFetch, formatPrice, generateAmoutOptions } from "../utils";
 import { useState } from "react";
 
 export const loader = async ({ params }) => {
@@ -13,6 +13,7 @@ function SingleProduct() {
     product.attributes;
   const dollarAmount = formatPrice(price);
   const [productColor, setProductColor] = useState(colors[0]);
+  const [amount, setAmount] = useState(0);
   return (
     <section className="align-content">
       <div className="text-md breadcrumbs">
@@ -52,6 +53,28 @@ function SingleProduct() {
                 ></button>
               );
             })}
+          </div>
+          <div className="form-control w-full max-w-xs">
+            <label>
+              <h4 className="text-md font-medium tracking-wider capitalize">
+                amout
+              </h4>
+            </label>
+            <select
+              className="select select-secondary select-border select-md"
+              value={amount}
+              onChange={(e) => setAmount(e.target.value)}
+            >
+              {generateAmoutOptions(10)}
+            </select>
+          </div>
+          <div className="mt-10">
+            <button
+              onClick={() => console.log("Add")}
+              className="btn btn-secondary btn-md"
+            >
+              Add to bag
+            </button>
           </div>
         </div>
       </div>
